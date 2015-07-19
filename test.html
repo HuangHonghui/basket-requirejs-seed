@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="dist/js/basket.full.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="Hello"></div>
+		
+		<!--<script data-main="dist/js/config" src="dist/js/lib/requirejs/require.js" type="text/javascript" charset="utf-8"></script>-->
+
+		<script type="text/javascript">
+			basket.require(
+				{url:"dist/js/lib/requirejs/require.js",key:"requirejs",unique:201507161334}
+				// 开发中不开启
+				//,{url:"dist/js/basket-loader.js",key:"basketLoader",unique:201507161334}
+				,{url:"dist/js/config.js", skipCache: true}
+				//,{url:"下一个文件",key:"",unique:201507161334}
+				)
+			.then(function(){
+				console.log("success");
+				basket.require(
+						{url:"dist/js/main.js",key:"main",unique:201507172202,skipCache: true}
+				);
+			})
+			.then(function(error){
+				console.log(error);
+			});
+
+		</script>
+	</body>
+</html>
